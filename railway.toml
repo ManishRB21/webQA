@@ -5,5 +5,5 @@
 [deploy]
   startCommand = "node packages/server/dist/index.js"
   healthcheckPath = "/health"
-  healthcheckTimeout = 30
+  healthcheckTimeout = 60
   restartPolicyType = "on_failure"
