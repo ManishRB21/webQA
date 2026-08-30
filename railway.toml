@@ -1,7 +1,9 @@
 [build]
   builder = "nixpacks"
+  buildCommand = "npm install && npm run build -w @webqa/shared && npm run build -w @webqa/engine && npm run build -w @webqa/server && npx playwright install chromium --with-deps"
 
 [deploy]
-  startCommand = "npm run build -w @webqa/shared && npm run build -w @webqa/engine && npm run build -w @webqa/server && npx playwright install chromium && npm run start:server"
+  startCommand = "node packages/server/dist/index.js"
   healthcheckPath = "/health"
+  healthcheckTimeout = 30
   restartPolicyType = "on_failure"
