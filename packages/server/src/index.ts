@@ -12,7 +12,9 @@ import {
 import type { ResolvedAuditConfig } from '@webqa/shared';
 
 const app = express();
-app.use(cors());
+app.use(cors({
+  origin: process.env.ALLOWED_ORIGIN ?? '*',
+}));
 app.use(express.json());
 
 const PORT = process.env.PORT ?? 3001;
