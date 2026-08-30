@@ -12,12 +12,18 @@ import {
 import type { ResolvedAuditConfig } from '@webqa/shared';
 
 const app = express();
-app.use(cors({
-  origin: process.env.ALLOWED_ORIGIN ?? '*',
-  credentials: false,
-}));
-// Explicitly handle preflight for all routes
-app.options('*', cors({ origin: process.env.ALLOWED_ORIGIN ?? '*' }));
+const allowedOrigin = process.env.ALLOWED_ORIGIN ?? '*';
+app.use(cors({ origin: allowedOrigin, credentials: false }));
+app.options('*', cors({ origin: allowedOrigin, credentials: false }));
+
+// Manually set CORS on SSE route since EventSource doesn't send preflight
+app.use((req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', allowedOrigin);
+  res.setHeader('Access-Control-Allow-Methods', 'GET, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+  next();
+});
+
 app.use(express.json());
 
 const PORT = process.env.PORT ?? 3001;
