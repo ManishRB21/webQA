@@ -145,6 +145,6 @@ app.get('/api/report/:auditId', async (req, res) => {
 
 app.get('/health', (_req, res) => res.json({ ok: true }));
 
-app.listen(PORT, () => {
-  console.log(`webQA server running on http://localhost:${PORT}`);
+app.listen(Number(PORT), '0.0.0.0', () => {
+  console.log(`webQA server running on http://0.0.0.0:${PORT}`);
 });
