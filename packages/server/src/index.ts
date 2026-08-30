@@ -14,7 +14,10 @@ import type { ResolvedAuditConfig } from '@webqa/shared';
 const app = express();
 app.use(cors({
   origin: process.env.ALLOWED_ORIGIN ?? '*',
+  credentials: false,
 }));
+// Explicitly handle preflight for all routes
+app.options('*', cors({ origin: process.env.ALLOWED_ORIGIN ?? '*' }));
 app.use(express.json());
 
 const PORT = process.env.PORT ?? 3001;
