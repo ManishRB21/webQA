@@ -1,0 +1,22 @@
+npm run audit -- --auth
+Common recipes
+
+# Quick look — one page, ~15 seconds
+npm run audit -- yoursite.com --pages 1 --no-interactions
+
+# Standard audit — the default, ~5 min for 25 pages
+npm run audit -- yoursite.com
+
+# Deep audit
+npm run audit -- yoursite.com --pages 100 --depth 3
+
+# Mobile, on a slow connection — where problems actually show up
+npm run audit -- yoursite.com --device mobile --network slow-4g
+
+# Just one section of the site
+npm run audit -- yoursite.com --include /products --pages 50
+
+# Fast + free: skip AI, skip clicking
+npm run audit -- yoursite.com --no-ai --no-interactions
+A bare host works — yoursite.com becomes https://yoursite.com.
+

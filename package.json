@@ -1,0 +1,30 @@
+{
+  "name": "webqa",
+  "version": "0.1.0",
+  "private": true,
+  "description": "AI Website QA & Optimization Agent — black-box automated auditing for any public URL",
+  "license": "MIT",
+  "workspaces": [
+    "packages/shared",
+    "packages/engine"
+  ],
+  "engines": {
+    "node": ">=20.11.0"
+  },
+  "scripts": {
+    "build": "npm run build -w @webqa/shared && npm run build -w @webqa/engine",
+    "audit": "npm run audit -w @webqa/engine --",
+    "test": "npm run test -w @webqa/shared && npm run test -w @webqa/engine",
+    "typecheck": "npm run typecheck --workspaces --if-present",
+    "playwright:install": "npx playwright install chromium"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.10",
+    "@typescript-eslint/eslint-plugin": "^7.16.0",
+    "@typescript-eslint/parser": "^7.16.0",
+    "eslint": "^8.57.0",
+    "tsx": "^4.16.2",
+    "typescript": "^5.5.3",
+    "vitest": "^1.6.0"
+  }
+}
