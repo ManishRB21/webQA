@@ -6,7 +6,9 @@
   "license": "MIT",
   "workspaces": [
     "packages/shared",
-    "packages/engine"
+    "packages/engine",
+    "packages/server",
+    "packages/web"
   ],
   "engines": {
     "node": ">=20.11.0"
@@ -16,7 +18,10 @@
     "audit": "npm run audit -w @webqa/engine --",
     "test": "npm run test -w @webqa/shared && npm run test -w @webqa/engine",
     "typecheck": "npm run typecheck --workspaces --if-present",
-    "playwright:install": "npx playwright install chromium"
+    "playwright:install": "npx playwright install chromium",
+    "dev:server": "npm run dev -w @webqa/server",
+    "dev:web": "npm run dev -w @webqa/web",
+    "start:server": "npm run start -w @webqa/server"
   },
   "devDependencies": {
     "@types/node": "^20.14.10",

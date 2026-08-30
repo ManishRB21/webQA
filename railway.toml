@@ -1,0 +1,7 @@
+[build]
+  builder = "nixpacks"
+
+[deploy]
+  startCommand = "npm run build -w @webqa/shared && npm run build -w @webqa/engine && npm run build -w @webqa/server && npm run start:server"
+  healthcheckPath = "/health"
+  restartPolicyType = "on_failure"
