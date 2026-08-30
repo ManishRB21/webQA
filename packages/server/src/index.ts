@@ -62,17 +62,23 @@ app.get('/api/audit-sse', async (req, res) => {
   });
 
   const config: ResolvedAuditConfig = {
+    url,
     maxPages: Math.min(Number(pages), 100),
     maxDepth: Math.min(Number(depth), 5),
     device: device as ResolvedAuditConfig['device'],
     network: network as ResolvedAuditConfig['network'],
+    browser: 'CHROMIUM',
     aiAnalysis: ai === 'true',
     interactionTesting: interactions === 'true',
+    lighthouse: false,
     checkExternalLinks: true,
     respectRobots: true,
     includeSubdomains: false,
+    activeSecurityScan: false,
+    authorizationAttestation: null,
     includePaths: [],
     excludePaths: [],
+    label: null,
   };
 
   try {
